@@ -1,0 +1,315 @@
+/**
+* #.# Section Div
+*
+* This section includes div width for design front-end review ,manage review page.
+*/
+
+[class*="bgr-col-"] {
+    float: left;
+    padding: 10px 0;
+}
+
+.bgr-row {
+    clear: both;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.bgr-col-1 {
+    width: 8.33%;
+}
+
+.bgr-col-2 {
+    width: 16.66%;
+}
+
+.bgr-col-3 {
+    width: 25%;
+}
+
+.bgr-col-4 {
+    width: 33.33%;
+}
+
+.bgr-col-5 {
+    width: 41.66%;
+}
+
+.bgr-col-6 {
+    width: 50%;
+}
+
+.bgr-col-7 {
+    width: 58.33%;
+}
+
+.bgr-col-8 {
+    width: 66.66%;
+}
+
+.bgr-col-9 {
+    width: 75%;
+}
+
+.bgr-col-10 {
+    width: 83.33%;
+}
+
+.bgr-col-11 {
+    width: 91.66%;
+}
+
+.bgr-col-12 {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    [class*="bgr-col-"] {
+        width: 100%;
+    }
+}
+
+
+/*** Section Div css end ***/
+
+
+/**
+* #.# Section Front Page css
+*
+* This section includes css for design front-end review ,manage review page content.
+*/
+
+.stars {
+    display: inline-block;
+}
+
+.review-full-description {
+    padding-top: 20px;
+    display: none;
+}
+
+.sidebar_review_avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 3px;
+}
+
+.round-avatars .sidebar_review_avatar,
+.bp-nouveau.round-avatars .sidebar_review_avatar {
+    border-radius: 50%;
+}
+
+.expand-review-des {
+    cursor: pointer;
+}
+
+.remove-review-button,
+.accept-button,
+.deny-button {
+    float: right;
+}
+
+#buddypress #bgr-message {
+    display: none !important;
+}
+
+#bgr-message {
+    margin: 0 0 15px;
+}
+
+.bgr-success {
+    font-size: 1.12rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid #cb2;
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    padding: 15px;
+}
+
+.bgr-bp-success {
+    display: none;
+}
+
+#bgr-message {
+    display: none;
+}
+
+.bgr-widget-rating {
+    padding: 5px 0 10px;
+}
+
+.group-request-list .avatar {
+    height: 70%;
+    width: 70%;
+}
+
+.bgr-row.item-list.group-request-list .bgr-col-2 {
+    width: 8%;
+}
+
+.bgr-row.item-list.group-request-list .bgr-col-10 {
+    width: 92%;
+}
+
+.review-description .bgr-col-12 {
+    padding-top: 0;
+}
+
+.bgr-bp-success {
+    display: none;
+}
+
+.group-add-form p {
+    margin: 10px 0;
+}
+
+
+/*** Section Front Page css  end ***/
+
+
+/**
+* #.# Section Media Queries css
+*
+* This section includes css for design front-end review ,manage review page content.
+*/
+
+@media(max-width: 767px) {
+
+    .remove-review-button,
+    .accept-button,
+    .deny-button {
+        float: none;
+        display: block;
+    }
+
+    .group-request-list .avatar {
+        display: block;
+    }
+
+    .group-request-list .item-title a {
+        text-align: center;
+        display: block;
+    }
+
+    .group-request-list .avatar {
+        height: 70px;
+        width: 70px;
+    }
+
+    .bgr-row.item-list.group-request-list .bgr-col-2,
+    .bgr-row.item-list.group-request-list .bgr-col-10 {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+#bgr_review_success_msg_modal .modal-content {
+    min-height: 200px;
+    min-width: 300px;
+    background-color: #f0f0f0;
+}
+
+#bgr_review_success_msg_modal .modal-header {
+    background-color: #f0f0f0;
+}
+
+#bgr_review_success_msg_modal p {
+    font-weight: 600;
+    padding-top: 8%;
+}
+
+#bgr_review_success_msg_modal .close {
+    color: #000;
+}
+
+.bgr-error-fields {
+    display: none;
+    color: red;
+    float: left;
+}
+
+#form-group-id {
+    width: 100%;
+}
+
+.rating-bgr {
+    overflow: hidden;
+}
+
+.bgr-header-row {
+    clear: both;
+    padding-bottom: 5px;
+}
+
+.bgr-group-header-ratings {
+    display: block;
+    padding: 10px 0;
+}
+
+.bgr-star-rate {
+    margin-right: 4px;
+}
+
+#request-review-list+#bp-group-edit-add-review-submit-wrapper {
+    display: none;
+}
+
+.bgr-submit-review {
+    cursor: pointer;
+}
+
+.olympus-theme .bgr-submit-review,
+.olympus-theme .bgr-submit-review:hover {
+    color: inherit;
+}
+
+.approve-message {
+    background: #ebf9eb;
+    border: 1px solid green;
+    border-radius: 0;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.approve-message .fa-check {
+    padding: 0 5px;
+    color: green;
+}
+
+#group-reviews-list .review-pagination {
+    text-align: center;
+    display: flex;
+}
+
+#group-reviews-list .review-pagination .page-numbers {
+    font-size: 16px;
+    margin: 2px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-transform: capitalize;
+    background: #f5f5f5;
+    border-radius: 50%;
+}
+
+#group-reviews-list .review-pagination span.page-numbers.current {
+    color: #000;
+    font-weight: bold;
+}
+
+#group-reviews-list .review-pagination a.next.page-numbers,
+#group-reviews-list .review-pagination a.prev.page-numbers {
+    width: 70px;
+    border-radius: 100px;
+}
+
+.bgr-col-4 .required {
+    color: red;
+}
+
+.multi-review {
+    margin-bottom: 5px;
+}

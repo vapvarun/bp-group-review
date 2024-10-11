@@ -1,0 +1,378 @@
+@CHARSET "ISO-8859-1";
+/**
+* #.# Section Div
+*
+* This section includes div width for design admin settings page.
+*/
+
+[class*="bgr-col-"] {
+	float: left;
+	padding: 10px 0;
+}
+
+.bgr-approve-review {
+	color: green;
+}
+
+.bgr-row {
+	clear: both;
+	/* border-bottom: 1px solid #ddd; */
+	overflow: hidden;
+	/* padding-bottom: 5px; */
+}
+
+.bgr-col-1 {
+	width: 8.33%;
+}
+
+.bgr-col-2 {
+	width: 16.66%;
+}
+
+.bgr-col-3 {
+	width: 25%;
+}
+
+.bgr-col-4 {
+	width: 33.33%;
+}
+
+.bgr-col-5 {
+	width: 41.66%;
+}
+
+.bgr-col-6 {
+	width: 50%;
+}
+
+.bgr-col-7 {
+	width: 58.33%;
+}
+
+.bgr-col-8 {
+	width: 66.66%;
+}
+
+.bgr-col-9 {
+	width: 75%;
+}
+
+.bgr-col-10 {
+	width: 83.33%;
+}
+
+.bgr-col-11 {
+	width: 91.66%;
+}
+
+.bgr-col-12 {
+	width: 100%;
+}
+
+@media(max-width: 767px) {
+	[class*="bgr-col-"] {
+		width: 100%;
+	}
+}
+
+/*** Section Div end ***/
+
+/**
+* #.# Section Admin Settings
+*
+* This section includes css for admin settings page content.
+*/
+
+@font-face {
+	font-family: FontAwesome;
+	src: url('../fonts/FontAwesome.otf');
+}
+
+.bgr-admin-settings-header p {
+	font-size: 24px;
+}
+
+.bgr-admin-criteria-settings-spinner,
+.bgr-admin-display-settings-spinner,
+.bgr-admin-general-settings-spinner {
+	vertical-align: middle;
+	display: none;
+}
+
+.bgr-btn-ajax {
+	color: #66c6e4 !important;
+}
+
+#bgr-settings-updated {
+	display: none;
+	margin-left: 0;
+	margin-bottom: 15px;
+}
+
+.rating-review-div {
+	margin-bottom: 10px;
+}
+
+.bgr-row-setting {
+	float: left;
+}
+
+.bgr-remove {
+	margin-bottom: 10px !important;
+}
+
+#bgr-save-admin-settings {
+	margin: 0 10px;
+}
+
+.bgr-row label {
+	font-weight: 700;
+}
+
+#bgr-textbox-container span {
+	font-weight: 700;
+	font-size: 15px;
+	padding: 5px;
+}
+
+/* The bgr-switch - the toggle-switch in admin settings */
+.bgr-switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.bgr-switch input {
+	display: none;
+}
+
+/* The bgr-slider */
+.bgr-slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.bgr-slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked+.bgr-slider {
+	background-color: #1d76da;
+}
+
+input:focus+.bgr-slider {
+	box-shadow: 0 0 1px #1d76da;
+}
+
+input:checked+.bgr-slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.bgr-slider.round {
+	border-radius: 34px;
+}
+
+.bgr-slider.round:before {
+	border-radius: 50%;
+}
+
+@media (min-width: 782px) {
+	.bgr-switch {
+		width: 30px;
+		height: 17px;
+	}
+
+	.bgr-slider:before {
+		height: 13px;
+		width: 13px;
+		left: 2px;
+		bottom: 2px;
+	}
+
+	input:checked+.bgr-slider:before {
+		-webkit-transform: translateX(13px);
+		-ms-transform: translateX(13px);
+		transform: translateX(13px);
+	}
+}
+
+/*** Accordion css start***/
+/* Style the buttons that are used to open and close the bgr-faq-accordion bgr-faq-panel */
+button.bgr-faq-accordion {
+	background-color: #fff;
+	color: #000;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	text-align: left;
+	outline: none;
+	transition: 0.4s;
+	font-weight: 700;
+	border-bottom: 2px solid #bbb;
+	border-top: 1px solid #ddd;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+/* Save button */
+.wbcom-admin-settings-page .bgr-submit-button {
+	margin-top: 10px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.bgr-faq-accordion-active,
+button.bgr-faq-accordion:hover {
+	background-color: #0073AA !important;
+	color: #fff;
+}
+
+.bgr-admin-des {
+	font-style: italic;
+}
+
+#bgr-exclude-group-review {
+	width: 200px;
+}
+
+.bgr-adming-setting {
+	float: left;
+	width: 90%;
+}
+
+button.bgr-accordion {
+	background-color: hsl(0, 0%, 87%);
+	border: medium none;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	color: hsl(0, 0%, 27%);
+	cursor: pointer;
+	font-size: 15px;
+	margin: 0 5%;
+	outline: medium none;
+	padding: 15px 20px;
+	text-align: left;
+	transition: all 0.4s ease 0s;
+	width: 90%;
+}
+
+button.bgr-accordion.active,
+button.bgr-accordion:hover {
+	background-color: hsl(207, 90%, 54%);
+	color: white;
+}
+
+div.panel {
+	padding: 0 18px;
+	background-color: white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	margin: 0px 5%;
+}
+
+button.bgr-accordion::after {
+	color: hsl(0, 0%, 47%);
+	content: "+";
+	float: right;
+	font-size: 13px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+button.bgr-accordion::after:hover {
+	color: white;
+}
+
+button.bgr-accordion.active::after {
+	content: "−";
+	color: white;
+}
+
+.bgr-admin-row {
+	clear: both;
+	overflow: hidden;
+	padding-bottom: 5px;
+}
+
+.bgr-extra-actions {
+	float: right;
+}
+
+.bgr-col-9 .selectize-control {
+	width: 50% !important;
+}
+
+@media(max-width: 767px) {
+	.bgr-col-9 .selectize-control {
+		width: 100% !important;
+	}
+}
+
+.selectize-dropdown-content {
+	max-height: 85px;
+}
+
+.selectize-control {
+	position: inherit;
+}
+
+.nav-tab-wrapper ul .general a:before {
+	content: "\f111" !important;
+}
+
+.nav-tab-wrapper ul .criteria a:before {
+	content: "\f155" !important;
+}
+
+.nav-tab-wrapper ul .shortcode a:before {
+	content: "\f150" !important;
+}
+
+.nav-tab-wrapper ul .display a:before {
+	content: "\f478" !important;
+}
+
+.nav-tab-wrapper ul .emails a:before {
+	content: "\f465" !important;
+}
+
+div#bgr-settings-updated {
+	position: absolute;
+	right: 50px;
+	z-index: 99;
+	border-radius: 10px;
+	line-height: normal;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	color: #10AB00;
+}
+
+button.notice-dismiss:before {
+	color: red !important;
+}
+
+.wbcom-settings-section-wrap {
+	overflow: inherit;
+}
