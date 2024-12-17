@@ -18,8 +18,13 @@ $member_id            = $current_user->ID;
 $reviews_per_page     = $bgr['reviews_per_page'];
 $review_rating_fields = $bgr['review_rating_fields'];
 $review_label         = $bgr['review_label'];
+$manage_review_label  = $bgr['manage_review_label'];
 $paged                = 1;
 
+$auto_approve_reviews = $bgr['auto_approve_reviews'];
+$current_group_id 	  = bp_get_group_id();
+$groups_is_user_admin = groups_is_user_admin( $member_id, $current_group_id ) ? true : false;
+$statuses 			  = $groups_is_user_admin == true || current_user_can( 'administrator' ) ? array( 'draft', 'publish' ) : 'publish';
 
 if ( 'reviews' !== basename( home_url( $wp->request ) ) ) {
 	$paged = basename( home_url( $wp->request ) );
@@ -27,14 +32,14 @@ if ( 'reviews' !== basename( home_url( $wp->request ) ) ) {
 
 $args    = array(
 	'post_type'      => 'review',
-	'post_status'    => 'publish',
+	'post_status'    => $statuses,
 	'category'       => 'group',
 	'posts_per_page' => $reviews_per_page,
 	'paged'          => $paged,
 	'meta_query'     => array(
 		array(
 			'key'     => 'linked_group',
-			'value'   => bp_get_group_id(),
+			'value'   => $current_group_id,
 			'compare' => '=',
 		),
 	),
@@ -57,7 +62,7 @@ $reviews = new WP_Query( $args );
 					while ( $reviews->have_posts() ) :
 						$reviews->the_post();
 						?>
-							<div class="bgr-row item-list group-request-list">
+							<div class="bgr-row item-list group-request-list review-status-<?php echo $reviews->post->post_status; ?>">
 								<div class="bgr-group-profiles">
 									<?php
 									$author = $reviews->post->post_author;
@@ -94,11 +99,20 @@ $reviews = new WP_Query( $args );
 									</div>
 								</div>
 								<div class="bgr-col-2">
-									<?php if ( groups_is_user_admin( $member_id, bp_get_group_id() ) ) : ?>
+									<?php if ( $groups_is_user_admin == true || current_user_can( 'administrator' ) ) : ?>
+									
 										<div class='remove-review generic-button'>
 											<a class='remove-review-button'> <?php esc_html_e( 'Delete', 'bp-group-reviews' ); ?> </a>
 											<input type="hidden" name="remove_review_id" value="<?php echo esc_attr( $post->ID ); ?>">
-										</div>
+										</div>	
+									
+										<?php if ( $auto_approve_reviews != 'yes' && $post->post_status == 'draft' ) { ?>
+											<div class='approve-review generic-button'>
+												<a class='approve-review-button'> <?php esc_html_e( 'Approve', 'bp-group-reviews' ); ?> </a>
+												<input type="hidden" name="approve_review_id" value="<?php echo esc_attr( $post->ID ); ?>">
+											</div>	
+										<?php } ?>									
+									
 									<?php endif; ?>
 								</div>
 
@@ -143,8 +157,8 @@ $reviews = new WP_Query( $args );
 						<div id="message" class="info">
 						<?php
 					}
-					/* translators: %1$s is replaced with review_label */
-						echo '<p>' . sprintf( esc_html__( 'Unfortunately, there are no %1$s were found.', 'bp-group-reviews' ), esc_html( strtolower( $review_label ) ) ) . '</p>';
+					/* translators: %1$s is replaced with manage_review_label */
+						echo '<p>' . sprintf( esc_html__( 'Unfortunately, there are no %1$s yet.', 'bp-group-reviews' ), esc_html( strtolower( $manage_review_label ) ) ) . '</p>';
 					?>
 					</div>
 					<?php } ?>

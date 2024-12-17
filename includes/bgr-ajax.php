@@ -44,6 +44,8 @@ if ( ! class_exists( 'BGR_AJAX' ) ) {
 			add_action( 'wp_ajax_nopriv_bgr_deny_review', array( $this, 'bgr_deny_review' ) );
 			add_action( 'wp_ajax_bgr_remove_review', array( $this, 'bgr_remove_review' ) );
 			add_action( 'wp_ajax_nopriv_bgr_remove_review', array( $this, 'bgr_remove_review' ) );
+			add_action( 'wp_ajax_bgr_approve_review', array( $this, 'bgr_approve_review' ) );
+			add_action( 'wp_ajax_nopriv_bgr_approve_review', array( $this, 'bgr_approve_review' ) );			
 			add_action( 'wp_ajax_bgr_submit_review', array( $this, 'bgr_submit_review' ) );
 			add_action( 'wp_ajax_nopriv_bgr_submit_review', array( $this, 'bgr_submit_review' ) );
 
@@ -166,6 +168,8 @@ if ( ! class_exists( 'BGR_AJAX' ) ) {
 						if ( groups_is_user_admin( $member_id, bp_get_group_id() ) ) :
 							$html .= '<div class="remove-review generic-button">';
 							$html .= '<a class="remove-review-button">' . __( 'Delete', 'bp-group-reviews' ) . '</a><input type="hidden" name="remove_review_id" value="' . esc_attr( $post->ID ) . '"></div>';
+							$html .= '<div class="approve-review generic-button">';
+							$html .= '<a class="approve-review-button">' . __( 'Approve', 'bp-group-reviews' ) . '</a><input type="hidden" name="approve_review_id" value="' . esc_attr( $post->ID ) . '"></div>';					
 						endif;
 						$html .= '</div><div class="clear"></div></div>';
 				endwhile;
@@ -819,6 +823,38 @@ if ( ! class_exists( 'BGR_AJAX' ) ) {
 			die;
 		}
 
+		/**
+		 * Mark Group Reviews as Approved from the Front End
+		 *
+		 * @since 3.2.3
+		 */
+		public function bgr_approve_review() {
+
+			$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
+
+			if ( isset( $nonce ) && ! wp_verify_nonce( $nonce, 'ajax-nonce' ) ) {
+				$error = new WP_Error( '001', 'Nonce not verified!', 'Some information' );
+				wp_send_json_error( $error );
+			}
+
+			if ( ! is_user_logged_in() ) return false;
+
+			$post_id 	 = isset( $_POST['approve_review_id'] ) ? sanitize_text_field( wp_unslash( $_POST['approve_review_id'] ) ) : '';
+			$review_post = array(
+				'ID'           => $post_id,
+				'post_status' => 'publish',
+			);
+
+			wp_update_post( $review_post );
+			
+			do_action( 'gamipress_bp_group_review', $author_id );
+			
+			echo 'review-approved-successfully';
+
+			die;
+
+		}		
+		
 	}
 	new BGR_AJAX();
 }

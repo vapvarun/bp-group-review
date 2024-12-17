@@ -79,6 +79,22 @@ jQuery(document).ready(function (e) {
       }
     );
   });
+	
+  // Approve review
+  jQuery(document).on("click", ".approve-review-button", function () {
+    var approve_review_id = jQuery(this).next().val();
+    jQuery.post(
+      ajaxurl,
+      {
+        action: "bgr_approve_review",
+        nonce: bgr_front_js_object.wbcom_nonce,
+        approve_review_id: approve_review_id,
+      },
+      function (response) {
+        location.reload();
+      }
+    );
+  });	
 
   // Remove error mark on change of input field
   jQuery("#form-group-id").on("change", function () {
